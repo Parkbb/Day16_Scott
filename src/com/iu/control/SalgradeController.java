@@ -29,6 +29,7 @@ public class SalgradeController {
 	public void start() {
 		boolean check = true;
 		ArrayList<SalgradeDTO> ar = null;
+		int select = 0;
 		while(check) {
 			System.out.println("1. 전체급여등급조회");
 			System.out.println("2. 개별급여등급조회");
@@ -36,7 +37,7 @@ public class SalgradeController {
 			System.out.println("4. 급 여 등 급 삭 제");
 			System.out.println("5. 종                료");
 
-			int select = sc.nextInt();
+			select = sc.nextInt();
 
 			switch(select) {
 			case 1:

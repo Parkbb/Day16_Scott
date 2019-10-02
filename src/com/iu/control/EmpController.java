@@ -25,6 +25,8 @@ public class EmpController {
 		while(check) {
 			System.out.println("1.사원정보 전체출력");
 			System.out.println("2.사원검색출력");
+			System.out.println("3.정보추가");
+			System.out.println("4.사원이름검색");
 			System.out.println("3.종료");
 			
 			select = sc.nextInt();

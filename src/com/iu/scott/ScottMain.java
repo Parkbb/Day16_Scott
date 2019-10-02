@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.iu.control.FrontController;
 import com.iu.dept.DeptDAO;
 import com.iu.dept.DeptDTO;
 import com.iu.emp.EmpDAO;
@@ -36,7 +37,8 @@ public class ScottMain {
 //		int empno = sc.nextInt();
 //		empDTO = dao.getselectOne(empno);
 //		ev.view(empDTO);
-		
+		FrontController fc = new FrontController();
+		fc.start();
 	
 	}
 }

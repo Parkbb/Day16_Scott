@@ -25,5 +25,8 @@ select * from EMP
 delete emp where empno = 9999
 
 select * from salgrade
+desc bonus
 
 delete salgrade where grade = 6
+
+desc emp

@@ -7,11 +7,13 @@ public class FrontController {
 	private Scanner sc;
 	private EmpController empController;
 	private DeptController deptController;
+	private SalgradeController salgradeController;
 	
 	public FrontController() {
 		sc = new  Scanner(System.in);
 		empController = new EmpController();
 		deptController = new DeptController();
+		salgradeController = new SalgradeController();
 	}
 	
 	public void start() {
@@ -27,7 +29,7 @@ public class FrontController {
 			switch(select) {
 			
 			case 1:
-				
+				salgradeController.start();
 				break;
 				
 			case 2:

@@ -8,7 +8,7 @@ public class SalInput {
 
 		private Scanner sc;
 		
-		public void SalgradeInput() {
+		public SalInput() {
 			sc = new Scanner(System.in);
 		}//생성자
 		//salgrade 입력

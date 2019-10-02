@@ -9,16 +9,70 @@ import java.util.ArrayList;
 import com.iu.util.DBConnector;
 
 public class EmpDAO {
+	
+	public int delete(int empno) {
+		Connection con = null;
+		PreparedStatement st = null;
+		int result = 0;
+		try {
+			con = DBConnector.getConnect();
+			String sql = "delete emp where empno = ? ";
+			
+			st = con.prepareStatement(sql);
+			st.setInt(1, empno);
+			
+			result = st.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 
+	public int insert(EmpDTO empDTO) {
+		Connection con = null;
+		PreparedStatement st = null;
+		int result = 0;
+		try {
+			con = DBConnector.getConnect();
+			String sql = "insert into emp values(?,?,?,?, sysdate ,?,?,?) ";
+			
+			st = con.prepareStatement(sql);
+			st.setInt(1, empDTO.getEmpno());
+			st.setString(2, empDTO.getEname());
+			st.setString(3, empDTO.getJob());
+			st.setInt(4, empDTO.getMgr());
+			st.setInt(5, empDTO.getSal());
+			st.setInt(6, empDTO.getComm());
+			st.setInt(7, empDTO.getDeptno());
+			
+			result = st.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				st.close();
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		return result;
+	}
+	
 	public EmpDTO getselectOne(int empno){
 		Connection con = null;
 		PreparedStatement st = null;
 		ResultSet rs = null;
-		EmpDTO empDTO = new EmpDTO();
+		EmpDTO empDTO = null;
 		try {
 			con = DBConnector.getConnect();
 			String sql = "select empno, ename, job, mgr, hiredate, sal, "
-					+ "NVL(comm,0) comm, deptno from emp "
+					+ "NVL(comm, 0) comm, deptno from emp "
 					+ "where empno = ? ";
 					
 			st = con.prepareStatement(sql);
@@ -27,7 +81,7 @@ public class EmpDAO {
 			
 			rs = st.executeQuery();
 			if(rs.next()){
-				
+				empDTO = new EmpDTO();
 				empDTO.setEmpno(rs.getInt(1));
 				empDTO.setEname(rs.getString(2));
 				empDTO.setJob(rs.getString(3));

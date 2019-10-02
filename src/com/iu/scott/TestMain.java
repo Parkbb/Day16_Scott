@@ -2,6 +2,7 @@ package com.iu.scott;
 
 import java.util.ArrayList;
 
+import com.iu.control.SalgradeController;
 import com.iu.salgrade.SalgradeDAO;
 import com.iu.salgrade.SalgradeDTO;
 
@@ -9,6 +10,7 @@ public class TestMain {
 	public static void main(String[] args) {
 		SalgradeDTO salDTO = null;
 		SalgradeDAO salDAO = new SalgradeDAO();
+		SalgradeController sc = new SalgradeController();
 		ArrayList<SalgradeDTO> ar = new ArrayList<SalgradeDTO>();
 		int result =0;
 		String str = "실패";
@@ -34,13 +36,7 @@ public class TestMain {
 //		salDTO.setHisal(5000);
 //		result = salDAO.insert(salDTO);
 		
+		sc.start();
 		
-		result = salDAO.delete(6);
-		
-		if(result>0) {
-			str = "성공";
-		}
-		
-		System.out.println(str);
 	}
 }
